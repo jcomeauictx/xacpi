@@ -39,7 +39,7 @@ COLORS = {
     'Charging': 'green',
     'Discharging': 'yellow',
     ACPI_FAIL: 'red',
-    # actual wx colors as RGBA tuples
+    # actual wx colors as RGB tuples
     'red': RED,
     'yellow': YELLOW,
     'green': GREEN,
