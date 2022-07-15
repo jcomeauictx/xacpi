@@ -74,7 +74,10 @@ class Icon(wx.adv.TaskBarIcon):
         color, charge = icon_data(status, charge)
         pixels = build_image(color, charge)
         bitmap = wx.Bitmap(WIDTH, HEIGHT)
-        bitmap.CopyFromBuffer(pixels)
+        # this format is default as of time of writing, but that could change.
+        # the previous version was broken when Colour.Get() changed default
+        # from RGB to RGBA.
+        bitmap.CopyFromBuffer(pixels, format=wx.BitmapBufferFormat_RGB)
         bitmap.SetMask(wx.Mask(bitmap, TRANSPARENT))
         self.SetIcon(
             icon=wx.Icon(bitmap),
