@@ -3,7 +3,9 @@ battery monitor for minimalist GNU/Linux Xwindow managers such as fluxbox
 
 ## prerequisites (assumes Debian Bullseye, adapt to your distribution)
 `sudo apt install acpi`
+
 Python3: `sudo apt install python3-wxgtk4.0`
+
 Python2: `pip2 install --user --upgrade wxpython`
 
 ## quickstart
