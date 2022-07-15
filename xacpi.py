@@ -1,4 +1,4 @@
-#!/usr/bin/python2 -OO
+#!/usr/bin/python3 -OO
 '''
 tray icon battery indicator
 
