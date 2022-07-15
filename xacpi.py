@@ -109,13 +109,13 @@ def build_image(color, charge):
 
     just a bunch of joined RGB bytes, WIDTH * HEIGHT * 3 bytes long
     '''
-    border = pixel(COLORS['border'])
-    padding = pixel(COLORS['padding'])
+    border = bytes(COLORS['border'])
+    padding = bytes(COLORS['padding'])
     battery_height = HEIGHT - (2 * BORDER_HEIGHT)
     charge_height = int((float(charge) / 100) * battery_height)
     if color == 'yellow' and charge_height <= WARNING_LEVEL:
         color = 'red'
-    charge = pixel(COLORS[color])
+    charge = bytes(COLORS[color])
     left = (padding * PADDING_WIDTH) + border
     right = border + (padding * PADDING_WIDTH)
     # top line of icon, just border and padding
@@ -130,12 +130,6 @@ def build_image(color, charge):
     pixels += left + (border * BATTERY_WIDTH) + right
     logging.debug('pixels: %r, length: %d', pixels, len(pixels))
     return pixels
-
-def pixel(color):
-    '''
-    turn RGB color tuple into bytestring
-    '''
-    return bytes(color)
 
 def acpi():
     '''
