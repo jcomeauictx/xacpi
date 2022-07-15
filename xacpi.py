@@ -80,7 +80,7 @@ class Icon(wx.adv.TaskBarIcon):
         icon_image.CopyFromBitmap(bitmap)
         self.SetIcon(
             icon=icon_image,
-            tooltip="Battery 0 State: %s, %s" % (status, charge)
+            tooltip='Battery 0 State: %s, %s' % (status, charge)
         )
 
 class IconApp(wx.Frame):
@@ -92,7 +92,7 @@ class IconApp(wx.Frame):
         '''
         initialize "application", really just a container for the icon
         '''
-        wx.Frame.__init__(self, None, wx.ID_ANY, "", size=(1,1))
+        wx.Frame.__init__(self, None, wx.ID_ANY, '', size=(1,1))
         self.app = Icon(self)
         self.Bind(wx.EVT_CLOSE, self.on_close)
 
