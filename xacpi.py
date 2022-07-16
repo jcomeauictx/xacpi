@@ -8,7 +8,7 @@ adapted from //ubuntuforums.org/showthread.php?t=1153951,
 any original code Copyright (c) 2013, 2022 jc.unternet.net
 licensing GPL3 or later
 '''
-import subprocess, re, logging  # pylint: disable=multiple-imports
+import os, subprocess, re, logging  # pylint: disable=multiple-imports
 import wx
 import wx.adv
 logging.basicConfig(level=logging.DEBUG if __debug__ else logging.INFO)
@@ -19,7 +19,7 @@ if bytes([255]) == '[255]':  # python2
 # pylint complains about wx attributes for no reason
 # pylint: disable=no-member
 APP = wx.App()  # must put this near beginning
-ACPI_PATTERN = b'^Battery 0:\\s+(\\w+), (\\d+)%'
+ACPI_PATTERN = r'^Battery 0:\s+(\w+), (\d+)%'
 ACPI_FAIL = '(acpi failure)'
 UPDATE_TIME = 5  # seconds
 MILLISECONDS = 1000  # multiplier for seconds
@@ -138,7 +138,10 @@ def acpi():
     '''
     call the `acpi` program and return charging status and level
     '''
-    output = subprocess.check_output(['acpi']).rstrip()
+    output = os.getenv(
+        'XACPI_TEST_STRING',  # set this environment variable for testing
+        subprocess.check_output(['acpi']).rstrip().decode()
+    )
     logging.debug('acpi: %s', output)
     status = re.compile(ACPI_PATTERN).match(output)
     logging.debug('status: %s', repr(status.groups()) if status else status)
