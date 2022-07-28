@@ -81,7 +81,7 @@ class Icon(wx.adv.TaskBarIcon):
         bitmap.SetMask(wx.Mask(bitmap, TRANSPARENT))
         self.SetIcon(
             icon=wx.Icon(bitmap),
-            tooltip='Battery 0 State: %s, %s' % (status, charge)
+            tooltip='Battery 0 State: %s, %s%%' % (status, charge)
         )
 
 class IconApp(wx.Frame):
