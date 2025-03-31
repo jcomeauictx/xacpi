@@ -1,6 +1,11 @@
 # xacpi
 battery monitor for minimalist GNU/Linux Xwindow managers such as fluxbox
 
+this project was born back in 2013, after numerous hard shutdowns when
+forgetting to plug in my laptop. it provides an icon on the lower right of
+the fluxbox screen indicating the battery charge. it has been rewritten a
+few times over the years.
+
 ## prerequisites (assumes Debian Bullseye, adapt to your distribution)
 `sudo apt install acpi`
 
