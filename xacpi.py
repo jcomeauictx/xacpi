@@ -19,7 +19,7 @@ if bytes([255]) == '[255]':  # python2
 # pylint complains about wx attributes for no reason
 # pylint: disable=no-member
 APP = wx.App()  # must put this near beginning
-ACPI_PATTERN = r'^Battery 0:\s+([^,]+), (\d+)%'
+ACPI_PATTERN = r'^Battery [0-9]+:\s+([^,]+), (\d+)%'
 ACPI_FAIL = '(acpi failure)'
 UPDATE_TIME = 5  # seconds
 MILLISECONDS = 1000  # multiplier for seconds
